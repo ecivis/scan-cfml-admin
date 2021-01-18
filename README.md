@@ -14,7 +14,7 @@ python3 -m venv env
 Activate and install requirements:
 ```
 . env/bin/activate
-pip install requests beautifulsoup4 pytest
+pip install requests beautifulsoup4
 ```
 
 ## Usage
