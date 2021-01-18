@@ -1,0 +1,21 @@
+[
+    {
+        "description": "Scan both http and https",
+        "hostname": [
+            "ucnt.net"
+        ]
+    },
+    {
+        "description": "Scan just http",
+        "ip": "45.33.49.169"
+    },
+    {
+        "description": "Scan using the base URL",
+        "baseurl": "https://ucnt.net",
+        "skip": true
+    },
+    {
+        "description": "Scan only the given URL",
+        "url": "https://ucnt.net:8888/secret/admin/login"
+    }
+]
