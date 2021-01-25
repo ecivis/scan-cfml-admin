@@ -6,22 +6,22 @@ This utility exists to help locate CFML engine administration interfaces that ha
 
 ## Setup
 
-From the project root, initialize a Python virtual environment:
+From the project root, initialize a Python virtual environment and activate:
 ```
-python3 -m venv env
+$ python3 -m venv env
+$ . env/bin/activate
 ```
 
-Activate and install requirements:
+Install the project requirements. The `(env) $` prompt is just a reminder (to myself).
 ```
-. env/bin/activate
-pip install requests beautifulsoup4
+(env) $ pip install -r requirements.txt
 ```
 
 ## Usage
 The program reads a JSON file containing targets to scan. It logs information found while scanning. Apparent instances of the Lucee and Adobe ColdFusion administrator interfaces are logged as warnings.
 
 ```
-./scan.py targets.json
+(env) $ ./scan.py targets.json
 ```
 
 ## Targets
@@ -131,13 +131,13 @@ Since JSON doesn't allow comments without hackery, it can be difficult to includ
 
 If scanning for both CFML engine vendor administration interfaces is unnecessary, use the vendor command line argument argument to specify lucee or adobe:
 ```
-./scan.py --vendor lucee targets.json
+(env) $ ./scan.py --vendor lucee targets.json
 ```
 This will reduce the number of URLs scanned for target definitions that perform expansion.
 
 The loglevel may be adjusted to see more detail about which URLs were actually scanned:
 ```
-./scan.py --loglevel INFO targets.json
+(env) $ ./scan.py --loglevel INFO targets.json
 ```
 
 ## Issues

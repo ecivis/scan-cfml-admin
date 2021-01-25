@@ -21,37 +21,37 @@ def process_targets(filename, vendor):
 
     for target in targets:
         baseurls = list()
-        if "skip" in target and target["skip"]:
+        if target.get("skip") and target["skip"]:
             continue
 
-        if "url" in target:
+        if target.get("url"):
             target["url"] = as_list(target["url"])
             for url in target["url"]:
                 scan_queue.append(url)
             continue
 
-        if "baseurl" in target:
+        if target.get("baseurl"):
             target["baseurl"] = as_list(target["baseurl"])
             for baseurl in target["baseurl"]:
                 if baseurl[-1] == "/":
                     baseurl = baseurl[:-1]
                 baseurls.append(baseurl)
 
-        if "hostname" in target:
+        if target.get("hostname"):
             target["hostname"] = as_list(target["hostname"])
             for hostname in target["hostname"]:
                 baseurls.append("http://" + hostname)
                 baseurls.append("https://" + hostname)
 
-        if "ip" in target:
+        if target.get("ip"):
             target["ip"] = as_list(target["ip"])
             for ip in target["ip"]:
                 baseurls.append("http://" + ip)
 
         for baseurl in baseurls:
-            if vendor == "all" or vendor == "lucee":
+            if vendor in ["all", "lucee"]:
                 scan_queue.append(baseurl + "/lucee/admin/server.cfm")
-            if vendor == "all" or vendor == "adobe":
+            if vendor in ["all", "adobe"]:
                 scan_queue.append(baseurl + "/CFIDE/administrator/index.cfm")
 
     return scan_queue
